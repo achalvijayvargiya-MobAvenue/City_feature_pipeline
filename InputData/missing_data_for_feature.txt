@@ -1,0 +1,9 @@
+national_highway_access
+internet_penetration_state
+smartphone_penetration_state
+digital_payment_index
+median_age_estimate
+consumer_price_index
+income_bucket
+avg_property_price
+city_population

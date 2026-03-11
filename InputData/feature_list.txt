@@ -1,0 +1,35 @@
+Feature_Name,Explanation,Best_Extraction_Method,Data_Type
+state,State where the city belongs,City→State mapping (Census India / GeoNames / OSM),categorical
+region,North/South/East/West/Central/Northeast,Manual mapping by state,categorical
+latitude,Latitude coordinate of city center,GeoNames / OpenStreetMap / Geocoding API,numeric
+longitude,Longitude coordinate of city center,GeoNames / OpenStreetMap / Geocoding API,numeric
+city_tier,Tier1/Tier2/Tier3 classification,RBI or marketing tier datasets,categorical
+is_metro_city,Whether city is a metro,Predefined metro city list,binary
+is_smart_city,Part of Smart Cities Mission,Government Smart Cities list,binary
+is_state_capital,City is state capital,Static mapping table,binary
+is_union_territory_capital,City is UT capital,Static mapping,binary
+city_population,Population of the city,Census India dataset,numeric
+population_density,Population per sq km,Population / city area,numeric
+literacy_rate,Literacy rate of population,Census dataset,numeric
+sex_ratio,Female to male ratio,Census dataset,numeric
+median_age_estimate,Estimated median age,Demographic projections,numeric
+consumer_price_index,Inflation indicator,MOSPI / RBI CPI dataset,numeric
+income_bucket,Income level classification,Derived from income data,categorical
+has_airport,Airport present in city,Airport Authority of India dataset,binary
+has_international_airport,International airport presence,AAI airport list,binary
+has_metro_rail,Metro rail availability,Metro rail project dataset,binary
+has_seaport,Seaport in city,Shipping ministry dataset,binary
+major_railway_station,Major railway hub,Indian Railways dataset,binary
+national_highway_access,Connected to national highway,OpenStreetMap road network,binary
+internet_penetration_state,Internet usage penetration,TRAI telecom reports,numeric
+smartphone_penetration_state,Smartphone adoption rate,Telecom surveys,numeric
+digital_payment_index,Digital payment adoption level,NPCI / RBI reports,numeric
+is_it_hub,City known for IT industry,IT industry cluster lists,binary
+is_manufacturing_hub,Manufacturing cluster city,Industrial corridor datasets,binary
+is_financial_center,Finance hub city,RBI/financial datasets,binary
+is_textile_hub,Textile industry hub,Ministry of Textiles data,binary
+is_education_hub,Education/university hub,AISHE dataset,binary
+is_tourist_city,Major tourist destination,Tourism ministry dataset,binary
+coastal_city,City near coastline,Distance to coastline GIS,binary
+avg_property_price,Average housing property price,Real estate reports,numeric
+distance_to_state_capital,Distance to state capital,Haversine calculation,numeric
