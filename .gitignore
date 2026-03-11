@@ -44,5 +44,5 @@ checkpoints/
 OutputData/
 dumps/
 
-# Large source data (exceeds GitHub 100MB limit; re-download when needed)
-true_source/
+# Large source data (if re-added; keep true_source/ lean with only dists11.geojson, dists.csv, etc.)
+# true_source/

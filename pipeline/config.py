@@ -22,9 +22,9 @@ PATHS = {
     "geonames_admin1":  os.path.join(BASE_DIR, "dumps",        "admin1CodesASCII.txt"),
     "geonames_admin2":  os.path.join(BASE_DIR, "dumps",        "admin2Codes.txt"),
     # District boundaries for GeoJSON-based validation (replaces geopy)
-    "dists_geojson":    os.path.join(BASE_DIR, "true_source",  "maps-master", "maps-master", "website", "docs", "data", "geojson", "dists11.geojson"),
+    "dists_geojson":    os.path.join(BASE_DIR, "true_source", "dists11.geojson"),
     # District-level census data (literacy, sex_ratio, population_density)
-    "dists_csv":       os.path.join(BASE_DIR, "true_source",  "maps-master", "maps-master", "website", "docs", "data", "csv", "dists.csv"),
+    "dists_csv":       os.path.join(BASE_DIR, "true_source", "dists.csv"),
 }
 
 # ─────────────────────────────────────────────
