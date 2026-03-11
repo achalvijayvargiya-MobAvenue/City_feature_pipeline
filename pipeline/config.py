@@ -69,10 +69,20 @@ DISTRICT_TO_MAJOR_CITY = {
 # ─────────────────────────────────────────────
 
 # Official HRA Tier-1 (X) cities — 7th Central Pay Commission
+# Plus aspiration metros with significant metro areas
 METRO_CITIES = {
-    "delhi", "mumbai", "chennai", "kolkata",
-    "bengaluru", "bangalore", "hyderabad",
-    "ahmedabad", "pune",
+    "delhi","new delhi",
+    "mumbai","bombay",
+    "chennai","madras",
+    "kolkata","calcutta",
+    "bengaluru","bangalore",
+    "hyderabad",
+    "ahmedabad",
+    "pune",
+    "surat",                # Major metro area, textile + manufacturing hub
+    "jaipur",               # State capital, major tourist + retail hub
+    "lucknow",              # State capital, major commercial center
+    "kochi","cochin"        # Metro area, IT + tourism
 }
 
 # All state/UT capitals (both spellings where relevant)
@@ -119,28 +129,30 @@ CAPITAL_CITIES = {
 
 # HRA Tier-2 (Y) cities — 7th CPC gazette list (97 cities)
 TIER2_CITIES = {
-    "agra", "ajmer", "aligarh", "prayagraj", "allahabad",
-    "amravati", "amritsar", "asansol", "aurangabad", "bareilly",
-    "belagavi", "belgaum", "bhavnagar", "bhiwandi", "bhopal",
-    "bhubaneswar", "bikaner", "bokaro", "chandigarh", "coimbatore",
-    "cuttack", "dehradun", "dhanbad", "bhilai", "durgapur",
-    "erode", "faridabad", "firozabad", "ghaziabad", "gorakhpur",
-    "kalaburagi", "gulbarga", "guntur", "gurugram", "gurgaon",
-    "guwahati", "hubballi", "hubli", "dharwad", "indore",
-    "jabalpur", "jaipur", "jalandhar", "jammu", "jamnagar",
-    "jamshedpur", "jhansi", "jodhpur", "kakinada", "kanpur",
-    "kochi", "kolhapur", "kollam", "kozhikode", "calicut",
-    "kurnool", "lucknow", "ludhiana", "madurai", "meerut",
-    "moradabad", "mysuru", "mysore", "nagpur", "nashik",
-    "nellore", "noida", "patna", "puducherry", "pondicherry",
-    "raipur", "rajkot", "rajahmundry", "ranchi", "rourkela",
-    "saharanpur", "salem", "sangli", "shimla", "siliguri",
-    "solapur", "srinagar", "surat", "thiruvananthapuram",
-    "thrissur", "tiruchirappalli", "trichy", "tirunelveli",
-    "tiruppur", "tirupati", "ujjain", "vadodara", "baroda",
-    "varanasi", "banaras", "vijayawada", "visakhapatnam",
-    "vizag", "warangal", "mira bhayandar", "vasai virar",
-    "navi mumbai", "greater noida",
+"agra","ajmer","aligarh","prayagraj","allahabad",
+"amravati","amritsar","asansol","aurangabad","bareilly",
+"belagavi","belgaum","bhavnagar","bhiwandi","bhopal",
+"bhubaneswar","bikaner","bokaro","chandigarh","coimbatore",
+"cuttack","dehradun","dhanbad","bhilai","durgapur",
+"erode","faridabad","firozabad","ghaziabad","gorakhpur",
+"gulbarga","kalaburagi","guntur","gurugram","gurgaon",
+"guwahati","hubli","hubballi","dharwad","indore",
+"jabalpur","jaipur","jalandhar","jammu","jamnagar",
+"jamshedpur","jhansi","jodhpur","kakinada","kanpur",
+"kochi","kolhapur","kollam","kozhikode","calicut",
+"kurnool","lucknow","ludhiana","madurai","meerut",
+"moradabad","mysuru","mysore","nagpur","nashik",
+"nellore","noida","patna","puducherry","pondicherry",
+"raipur","rajkot","rajahmundry","ranchi","rourkela",
+"saharanpur","salem","sangli","shimla","siliguri",
+"solapur","srinagar","surat","thiruvananthapuram",
+"thrissur","tiruchirappalli","trichy","tirunelveli",
+"tiruppur","tirupati","ujjain","vadodara","baroda",
+"varanasi","banaras","vijayawada","visakhapatnam",
+"vizag","warangal","mira bhayandar","vasai virar",
+"navi mumbai","greater noida",
+"alwar","udaipur","bhilwara","gaya","muzaffarpur",
+"bilaspur","korba","gwalior","satna","ratlam"
 }
 
 # ─────────────────────────────────────────────
@@ -177,15 +189,16 @@ UT_CAPITALS = {
     "silvassa", "chandigarh", "delhi", "new delhi",
 }
 
-# Cities with airports (major domestic)
+# Cities with airports (major domestic/commercial airports)
 CITIES_WITH_AIRPORT = {
     "agra", "ahmedabad", "amritsar", "aurangabad", "bengaluru", "bangalore",
     "bhopal", "bhubaneswar", "chandigarh", "chennai", "coimbatore", "dehradun",
     "delhi", "new delhi", "goa", "panaji", "guwahati", "hyderabad", "imphal",
-    "indore", "jaipur", "jammu", "kolkata", "kochi", "leh", "lucknow",
+    "indore", "jaipur", "jammu", "kolkata", "kochi", "cochin", "leh", "lucknow",
     "madurai", "mumbai", "nagpur", "patna", "pune", "raipur", "rajkot",
-    "ranchi", "srinagar", "surat", "thiruvananthapuram", "tiruchirappalli",
-    "trichy", "vadodara", "varanasi", "vijayawada", "visakhapatnam", "vizag",
+    "ranchi", "srinagar", "surat", "thiruvananthapuram", "trivandrum", 
+    "tiruchirappalli", "trichy", "vadodara", "varanasi", "vijayawada", 
+    "visakhapatnam", "vizag", "erode", "salem",
 }
 
 # Cities with international airports
@@ -195,13 +208,15 @@ CITIES_WITH_INTERNATIONAL_AIRPORT = {
     "trivandrum", "thiruvananthapuram", "guwahati", "srinagar", "jaipur",
     "lucknow", "mangaluru", "mangalore", "nagpur", "pune", "tiruchirappalli",
     "trichy", "visakhapatnam", "vizag", "gaya", "varanasi", "imphal",
+    "surat", "vadodara", "coimbatore", "bhopal", "patna",
 }
 
-# Cities with metro rail
+# Cities with metro rail (rapid transit/MRTS/metro under construction or operational)
 CITIES_WITH_METRO_RAIL = {
     "delhi", "new delhi", "mumbai", "bengaluru", "bangalore", "chennai",
-    "kolkata", "hyderabad", "jaipur", "kochi", "lucknow", "nagpur", "pune",
-    "ahmedabad", "kanpur", "bhopal", "indore", "kozhikode", "calicut",
+    "kolkata", "hyderabad", "jaipur", "kochi", "cochin", "lucknow", "nagpur", 
+    "pune", "ahmedabad", "kanpur", "bhopal", "indore", "kozhikode", "calicut",
+    "surat", "visakhapatnam", "vizag", "guwahati",
 }
 
 # Cities with seaports
@@ -219,18 +234,21 @@ MAJOR_RAILWAY_STATION = {
     "thiruvananthapuram", "kochi", "coimbatore", "madurai", "varanasi",
 }
 
-# IT hub cities
+# IT hub cities (major software/IT hubs and BPOs)
 IT_HUB_CITIES = {
     "bengaluru", "bangalore", "hyderabad", "chennai", "pune", "mumbai",
     "delhi", "noida", "gurugram", "gurgaon", "kolkata", "ahmedabad",
-    "jaipur", "chandigarh", "kochi", "thiruvananthapuram", "indore",
+    "jaipur", "chandigarh", "kochi", "cochin", "thiruvananthapuram", "indore",
+    "vadodara", "visakhapatnam", "vizag", "mysore", "mysuru", "kota", "lucknow",
 }
 
-# Manufacturing hub cities
+# Manufacturing hub cities (auto, engineering, textiles, chemicals)
 MANUFACTURING_HUB_CITIES = {
     "pune", "chennai", "bangalore", "bengaluru", "ahmedabad", "mumbai",
     "delhi", "gurugram", "gurgaon", "faridabad", "jaipur", "coimbatore",
     "ludhiana", "tiruppur", "surat", "vadodara", "nashik", "nagpur",
+    "visakhapatnam", "vizag", "indore", "bhopal", "guwahati", "sangli",
+    "belgaum", "belagavi", "kolhapur", "vapi", "aurangabad", "solapur",
 }
 
 # Financial center cities
@@ -245,20 +263,40 @@ TEXTILE_HUB_CITIES = {
     "kanpur", "indore", "jaipur", "mumbai", "erode", "salem",
 }
 
-# Education hub cities
+# Education hub cities (universities, skill training, coaching hubs)
 EDUCATION_HUB_CITIES = {
     "bangalore", "bengaluru", "pune", "chennai", "hyderabad", "delhi",
     "mumbai", "kolkata", "chandigarh", "jaipur", "bhopal", "allahabad",
     "prayagraj", "mysore", "mysuru", "coimbatore", "thiruvananthapuram",
+    "kota", "indore", "lucknow", "patna", "varanasi", "banaras",
+    "dehradun", "guwahati", "chandigarh", "shimla",
 }
 
-# Major tourist cities
+# Major tourist cities (heritage, nature, religious, wellness)
 TOURIST_CITIES = {
-    "agra", "jaipur", "udaipur", "jodhpur", "varanasi", "goa", "kerala",
-    "kochi", "munnar", "shimla", "manali", "rishikesh", "haridwar",
-    "darjeeling", "srinagar", "leh", "pondicherry", "puducherry",
-    "hampi", "mahabalipuram", "khajuraho", "ajanta", "ellora",
-    "amritsar", "chandigarh", "mysore", "mysuru", "ooty", "udaipur",
+    # Rajasthan
+    "jaipur", "udaipur", "jodhpur", "jaisalmer", "ajmer", "pushkar",
+    "bikaner", "khimsar", "mandawa", "palanpur", "bhilwara",
+    # North India
+    "agra", "varanasi", "banaras", "mathura", "vrindavan", "rishikesh",
+    "haridwar", "dehradun", "shimla", "manali", "kasol", "palampur",
+    "dharamshala", "mcleodganj", "amritsar", "chandigarh",
+    # South India
+    "kochi", "cochin", "munnar", "thekkady", "alleppey", "kottayam",
+    "kumarakom", "thiruvananthapuram", "trivandrum",
+    "mysore", "mysuru", "ooty", "coorg", "hampi", "hassan", "chikmagalur",
+    "mahabalipuram", "pondicherry", "puducherry", "tirupati", "tiruvannamalai",
+    "madurai", "thanjavur", "rameswaram",
+    # East India
+    "darjeeling", "kalimpong", "shillong", "guwahati", "assam",
+    "kolkata",
+    # West
+    "goa", "panaji", "mumbai", "aurangabad", "ellora", "ajanta",
+    "khajuraho", "indore", "mandu", "bhopal",
+    # Ladakh
+    "leh", "srinagar", "kashmir", "pahalgam", "gulmarg",
+    # Specialized
+    "nainital", "almora", "auli", "rishikesh",
 }
 
 # ─────────────────────────────────────────────
@@ -318,18 +356,58 @@ STATE_TO_REGION = {
 }
 
 # ─────────────────────────────────────────────
-# COASTAL STATES / UTs
+# COASTAL DISTRICTS
 # ─────────────────────────────────────────────
-COASTAL_STATES = {
-    "gujarat", "maharashtra", "goa",
-    "karnataka", "kerala", "tamil nadu",
-    "andhra pradesh", "odisha", "orissa", "west bengal",
-    "puducherry", "pondicherry",
-    "lakshadweep",
-    "andaman and nicobar islands", "andaman & nicobar",
-    "dadra and nagar haveli and daman and diu",
-    "daman and diu", "daman & diu",
-}
+COASTAL_DISTRICTS = [
+    # Gujarat
+    "kutch", "jamnagar", "porbandar", "dwarka", "devbhoomi dwarka",
+    "junagadh", "gir somnath", "bhavnagar", "amreli", "botad",
+    "ahmedabad", "anand",
+
+    # Maharashtra
+    "mumbai", "mumbai suburban", "thane", "raigad", "ratnagiri", "sindhudurg",
+
+    # Goa
+    "north goa", "south goa",
+
+    # Karnataka
+    "uttara kannada", "dakshina kannada", "udupi",
+
+    # Kerala
+    "thiruvananthapuram", "trivandrum", "kollam", "pathanamthitta",
+    "alappuzha", "kottayam", "ernakulam", "kochi", "cochin",
+    "thrissur", "malappuram", "kozhikode", "calicut", "kannur", "kasaragod",
+
+    # Tamil Nadu
+    "kanyakumari", "tirunelveli", "tuticorin", "thoothukudi",
+    "ramanathapuram", "puducherry", "villupuram", "chengalpattu",
+    "kanchipuram", "tiruvallur", "ranipet", "vellore", "chennai", "madras",
+
+    # Andhra Pradesh
+    "nellore", "tirupati", "chittoor", "bapatla", "guntur", "krishna",
+    "west godavari", "east godavari", "visakhapatnam", "vizag",
+    "vizianagaram", "srikakulam",
+
+    # Odisha
+    "balasore", "baleswar", "bhadrak", "kendrapara", "jagatsinghpur",
+    "cuttack", "khordha", "puri", "ganjam", "gajapati",
+
+    # West Bengal
+    "north 24 parganas", "south 24 parganas", "hooghly",
+    "east medinipur", "west medinipur",
+
+    # Puducherry (UT)
+    "puducherry", "pondicherry", "karaikal", "mahe", "yanam",
+
+    # Lakshadweep (UT)
+    "lakshadweep", "kavaratti", "agatti", "amini", "androth", "minicoy",
+
+    # Andaman & Nicobar (UT)
+    "north and middle andaman", "south andaman", "nicobar", "port blair",
+
+    # Daman & Diu (UT)
+    "daman", "diu",
+]
 
 # ─────────────────────────────────────────────
 # STATE-LEVEL LITERACY RATES (Census 2011 fallback)
@@ -431,3 +509,71 @@ OUTPUT_COLUMNS = [
     "is_education_hub",
     "is_tourist_city",
 ]
+
+# ─────────────────────────────────────────────
+# FEATURE GENERATION MAPPING
+# ─────────────────────────────────────────────
+# Maps hardcoded variable names to output columns that will be generated
+FEATURE_MAPPING = {
+    "METRO_CITIES":                        "is_metro_city",
+    "CAPITAL_CITIES/STATE_CAPITALS":       "is_state_capital",
+    "UT_CAPITALS":                         "is_union_territory_capital",
+    "TIER2_CITIES":                        "city_tier",  # Tier 1 vs Tier 2 classification
+    "SMART_CITIES":                        "is_smart_city",
+    "CITIES_WITH_AIRPORT":                 "has_airport",
+    "CITIES_WITH_INTERNATIONAL_AIRPORT":   "has_international_airport",
+    "CITIES_WITH_METRO_RAIL":              "has_metro_rail",
+    "CITIES_WITH_SEAPORT":                 "has_seaport",
+    "MAJOR_RAILWAY_STATION":               "major_railway_station",
+    "IT_HUB_CITIES":                       "is_it_hub",
+    "MANUFACTURING_HUB_CITIES":            "is_manufacturing_hub",
+    "FINANCIAL_CENTER_CITIES":             "is_financial_center",
+    "TEXTILE_HUB_CITIES":                  "is_textile_hub",
+    "EDUCATION_HUB_CITIES":                "is_education_hub",
+    "TOURIST_CITIES":                      "is_tourist_city",
+    "STATE_TO_REGION":                     "geographic_region",
+    "COASTAL_DISTRICTS":                   "coastal_city",  # District-level mapping
+    "STATE_LITERACY_RATES":                "literacy_rate",
+}
+
+# ─────────────────────────────────────────────
+# FEATURE COMPUTATION NOTES
+# ─────────────────────────────────────────────
+"""
+FEATURES COMPUTED FROM HARDCODED LISTS:
+
+1. **City Tier Classification**:
+   - if city in METRO_CITIES → city_tier = "Tier 1 Metro"
+   - elif city in TIER2_CITIES → city_tier = "Tier 2"
+   - else → city_tier = "Tier 3 / Smaller"
+
+2. **Boolean Infrastructure Flags** (all direct lookup):
+   - is_metro_city ← METRO_CITIES
+   - is_state_capital ← STATE_CAPITALS
+   - is_union_territory_capital ← UT_CAPITALS
+   - is_smart_city ← SMART_CITIES
+   - has_airport ← CITIES_WITH_AIRPORT
+   - has_international_airport ← CITIES_WITH_INTERNATIONAL_AIRPORT
+   - has_metro_rail ← CITIES_WITH_METRO_RAIL
+   - has_seaport ← CITIES_WITH_SEAPORT
+   - major_railway_station ← MAJOR_RAILWAY_STATION (boolean)
+
+3. **Industry/Specialization Flags**:
+   - is_it_hub ← IT_HUB_CITIES
+   - is_manufacturing_hub ← MANUFACTURING_HUB_CITIES
+   - is_financial_center ← FINANCIAL_CENTER_CITIES
+   - is_textile_hub ← TEXTILE_HUB_CITIES
+   - is_education_hub ← EDUCATION_HUB_CITIES
+   - is_tourist_city ← TOURIST_CITIES
+
+4. **Geographic Features**:
+   - geographic_region ← STATE_TO_REGION (after state matching)
+   - coastal_city ← COASTAL_DISTRICTS (district-level lookup)
+     * Returns True if district_normalized in COASTAL_DISTRICTS, else False
+
+5. **Demographic Features**:
+   - literacy_rate (fallback) ← STATE_LITERACY_RATES (if district-level unavailable)
+
+6. **Direct Lookups** (for derivation):
+   - DISTRICT_TO_MAJOR_CITY ← used for major_city disambiguation in metro areas
+"""
