@@ -1,0 +1,10 @@
+geography:
+  coastal_radius_km: 25
+
+city_tier:
+  t1_min_population: 1000000
+  t2_min_population: 250000
+
+industry_hub:
+  minimum_employment: 5000
+  minimum_share: 0.05

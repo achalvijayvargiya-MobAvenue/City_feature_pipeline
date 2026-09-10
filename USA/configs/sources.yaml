@@ -1,0 +1,24 @@
+census:
+  acs_dataset: acs/acs5
+  acs_year: 2024
+  zcta_year: 2025
+  place_year: 2025
+  cbsa_year: 2025
+
+bls:
+  cpi_series: CUUR0000SA0
+
+faa:
+  enabled: true
+
+bts:
+  enabled: true
+
+fra:
+  enabled: true
+
+marad:
+  enabled: true
+
+noaa:
+  enabled: true

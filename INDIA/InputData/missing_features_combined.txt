@@ -1,0 +1,14 @@
+# Combined list of features missing in pipeline
+# Sources: missing_data_for_feature.txt + OutputData/city_features.csv analysis (0% coverage)
+# Generated: 2025-03-11
+
+internet_penetration_state
+smartphone_penetration_state
+digital_payment_index
+median_age_estimate
+consumer_price_index
+income_bucket
+avg_property_price
+city_population
+literacy_rate
+literacy_source
