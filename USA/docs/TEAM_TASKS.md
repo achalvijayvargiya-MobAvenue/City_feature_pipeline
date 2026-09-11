@@ -14,12 +14,12 @@ To ensure everyone gets hands-on experience with the new architecture, the remai
 **Objective:** The CLI (`src/usa_city_features/cli.py`) currently has empty commands. You need to build the `Orchestrator` class that glues the adapters, geography, and feature calculators together.
 
 **Step-by-Step:**
-1. [ ] Create `src/usa_city_features/orchestrator.py`.
-2. [ ] Implement a `PipelineOrchestrator` class that takes the `Config` object.
-3. [ ] Write the `run()` method to execute the pipeline sequentially: 
+1. [x] Create `src/usa_city_features/orchestrator.py`.
+2. [x] Implement a `PipelineOrchestrator` class that takes the `Config` object.
+3. [x] Write the `run()` method to execute the pipeline sequentially: 
    - Load ZCTAs -> Fetch Census Data -> Fetch Infra Data -> Run Spatial Joins -> Calculate Features -> Validate -> Export.
-4. [ ] Update `cli.py` to instantiate `PipelineOrchestrator` and call its methods for the `download`, `build-features`, and `run` commands.
-5. [ ] **Test:** Run `usa_city_features run --offline` and ensure it executes the pipeline flow (even if the data is mocked/empty).
+4. [x] Update `cli.py` to instantiate `PipelineOrchestrator` and call its methods for the `download`, `build-features`, and `run` commands.
+5. [x] **Test:** Run `usa_city_features run --offline` and ensure it executes the pipeline flow (even if the data is mocked/empty).
 
 ---
 

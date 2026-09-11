@@ -1,7 +1,7 @@
 import click
 import os
 from .config.loader import load_config
-
+from .orchestrator import PipelineOrchestrator
 @click.group()
 def main():
     """USA City Features Pipeline CLI"""
@@ -13,7 +13,8 @@ def download(config):
     """Download source datasets"""
     cfg = load_config(config)
     click.echo("Downloading sources...")
-    # TODO: Implement download logic
+    orchestrator = PipelineOrchestrator(cfg)
+    orchestrator.download()
 
 @main.command()
 @click.option('--config', default='configs', help='Path to configs directory')
@@ -21,7 +22,8 @@ def build_geography(config):
     """Build geography mappings"""
     cfg = load_config(config)
     click.echo("Building geography...")
-    # TODO: Implement geography building
+    orchestrator = PipelineOrchestrator(cfg)
+    orchestrator.build_geography()
 
 @main.command()
 @click.option('--config', default='configs', help='Path to configs directory')
@@ -29,7 +31,8 @@ def build_features(config):
     """Build derived features"""
     cfg = load_config(config)
     click.echo("Building features...")
-    # TODO: Implement feature building
+    orchestrator = PipelineOrchestrator(cfg)
+    orchestrator.build_features()
 
 @main.command()
 @click.option('--config', default='configs', help='Path to configs directory')
@@ -37,7 +40,8 @@ def validate(config):
     """Validate final dataset"""
     cfg = load_config(config)
     click.echo("Validating dataset...")
-    # TODO: Implement validation
+    orchestrator = PipelineOrchestrator(cfg)
+    orchestrator.validate()
 
 @main.command()
 @click.option('--config', default='configs', help='Path to configs directory')
@@ -46,7 +50,8 @@ def export(config, output):
     """Export final dataset"""
     cfg = load_config(config)
     click.echo(f"Exporting to {output}...")
-    # TODO: Implement export
+    orchestrator = PipelineOrchestrator(cfg)
+    orchestrator.export(output)
 
 @main.command()
 @click.option('--config', default='configs', help='Path to configs directory')
@@ -55,7 +60,8 @@ def run(config, offline):
     """Run full pipeline"""
     cfg = load_config(config)
     click.echo(f"Running pipeline (offline={offline})...")
-    # TODO: Implement full run
+    orchestrator = PipelineOrchestrator(cfg)
+    orchestrator.run(offline=offline)
 
 @main.command()
 @click.option('--zcta', required=True, help='ZCTA to inspect')
