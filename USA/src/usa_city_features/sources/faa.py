@@ -18,7 +18,7 @@ class FAAAdapter(SourceAdapter):
         params = {
             "where": "1=1",
             "outFields": "Loc_Id,Facility_Name,ARPA_Latitude,ARPA_Longitude,Facility_Type,Use_Type",
-            "f": "json"
+            "f": "geojson"
         }
         params.update(request.params)
         
