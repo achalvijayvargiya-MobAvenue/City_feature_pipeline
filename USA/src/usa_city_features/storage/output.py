@@ -3,6 +3,7 @@ from typing import Dict, Any
 import json
 from pathlib import Path
 from .schema_validator import REQUIRED_COLUMNS, generate_quality_report
+import numpy as np
 
 def map_to_36_columns(internal_df: pd.DataFrame) -> pd.DataFrame:
     """Map the internal rich dataframe to the exact 36-column schema."""
@@ -120,6 +121,20 @@ def map_to_36_columns(internal_df: pd.DataFrame) -> pd.DataFrame:
     for col in REQUIRED_COLUMNS:
         if col not in out_df.columns:
             out_df[col] = None
+            
+    # Selectively replace 0 with None for demographic/economic columns where 0 usually means missing
+    replace_0_cols = [
+        "literacy_rate", "median_age_estimate", "consumer_price_index", 
+        "internet_penetration_state", "smartphone_penetration_state", 
+        "digital_payment_index", "sex_ratio", "distance_to_state_capital",
+        "district_population_numeric"
+    ]
+    for col in replace_0_cols:
+        if col in out_df.columns:
+            out_df[col] = out_df[col].replace({0: np.nan, 0.0: np.nan})
+
+    # Replace all pandas NaNs/NaTs with Python None for standard JSON/CSV export compliance
+    out_df = out_df.where(pd.notnull(out_df), None)
             
     return out_df[REQUIRED_COLUMNS]
 
