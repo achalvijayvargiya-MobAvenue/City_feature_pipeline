@@ -84,10 +84,10 @@ To ensure everyone gets hands-on experience with the new architecture, the remai
 **Objective:** Ensure the final output strictly adheres to the 36-column contract and generate data quality reports.
 
 **Step-by-Step:**
-1. [ ] In `src/usa_city_features/validation/schema_validator.py`, implement strict type checking (e.g., `pincode` must be a string, `latitude` must be a float).
-2. [ ] Update `src/usa_city_features/storage/output.py` to map the rich internal dataset to the exact 36 columns. Ensure missing data is represented as `None` (or empty string in CSV), NOT as `0`.
-3. [ ] Generate the `data/processed/quality_report.json` containing null counts, range errors, and coverage percentages.
-4. [ ] **Test:** Create a dummy dataframe with 35 columns and assert that `validate_schema` fails. Create a dataframe with a latitude of `150.0` and assert that `validate_ranges` catches the error.
+1. [x] In `src/usa_city_features/validation/schema_validator.py`, implement strict type checking (e.g., `pincode` must be a string, `latitude` must be a float).
+2. [x] Update `src/usa_city_features/storage/output.py` to map the rich internal dataset to the exact 36 columns. Ensure missing data is represented as `None` (or empty string in CSV), NOT as `0`.
+3. [x] Generate the `data/processed/quality_report.json` containing null counts, range errors, and coverage percentages.
+4. [x] **Test:** Create a dummy dataframe with 35 columns and assert that `validate_schema` fails. Create a dataframe with a latitude of `150.0` and assert that `validate_ranges` catches the error.
 
 ---
 
