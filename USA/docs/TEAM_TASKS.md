@@ -29,11 +29,11 @@ To ensure everyone gets hands-on experience with the new architecture, the remai
 **Objective:** The core of the USA pipeline is mapping Zip Code Tabulation Areas (ZCTAs) to Census Places (Cities) and Counties using spatial joins.
 
 **Step-by-Step:**
-1. [ ] Create a download script (`scripts/download_sources.py`) to fetch Census TIGER/Line shapefiles for ZCTAs, Places, Counties, and CBSAs.
-2. [ ] Update `src/usa_city_features/geography/spatial_join.py` to load these shapefiles into `geopandas.GeoDataFrame`s.
-3. [ ] Implement the logic: For a given ZCTA centroid (Point), find which Place (Polygon) and County (Polygon) it intersects with.
-4. [ ] Handle edge cases: What if a ZCTA crosses multiple places? (Rule: Use the Place containing the ZCTA representative point).
-5. [ ] **Test:** Create a test in `tests/integration/test_geography.py` using ZCTA `90210` (Beverly Hills). Assert that it correctly maps to Los Angeles County and the Place of Beverly Hills.
+1. [x] Create a download script (`scripts/download_sources.py`) to fetch Census TIGER/Line shapefiles for ZCTAs, Places, Counties, and CBSAs.
+2. [x] Update `src/usa_city_features/geography/spatial_join.py` to load these shapefiles into `geopandas.GeoDataFrame`s.
+3. [x] Implement the logic: For a given ZCTA centroid (Point), find which Place (Polygon) and County (Polygon) it intersects with.
+4. [x] Handle edge cases: What if a ZCTA crosses multiple places? (Rule: Use the Place containing the ZCTA representative point).
+5. [x] **Test:** Create a test in `tests/integration/test_geography.py` using ZCTA `90210` (Beverly Hills). Assert that it correctly maps to Los Angeles County and the Place of Beverly Hills.
 
 ---
 
@@ -43,11 +43,11 @@ To ensure everyone gets hands-on experience with the new architecture, the remai
 **Objective:** Fetch real demographic data from the US Census API (ACS 5-Year) and map it to our internal data model.
 
 **Step-by-Step:**
-1. [ ] Update `src/usa_city_features/sources/census.py`. Implement the exact API call to fetch variables defined in the SDD (e.g., `B01003_001E` for population, `B01002_001E` for median age).
-2. [ ] Handle API pagination or batching if requesting data for all ~33,000 ZCTAs.
-3. [ ] Ensure the `LocalCache` is saving the raw JSON responses to `data/raw/census/`.
-4. [ ] In `src/usa_city_features/features/demographic_features.py`, wire up the formulas to calculate `literacy_rate` (education proxy), `internet_penetration`, and `smartphone_penetration`.
-5. [ ] **Test:** Write `tests/unit/test_census.py` to mock the Census API response and ensure the parser correctly extracts the population and age.
+1. [x] Update `src/usa_city_features/sources/census.py`. Implement the exact API call to fetch variables defined in the SDD (e.g., `B01003_001E` for population, `B01002_001E` for median age).
+2. [x] Handle API pagination or batching if requesting data for all ~33,000 ZCTAs.
+3. [x] Ensure the `LocalCache` is saving the raw JSON responses to `data/raw/census/`.
+4. [x] In `src/usa_city_features/features/demographic_features.py`, wire up the formulas to calculate `literacy_rate` (education proxy), `internet_penetration`, and `smartphone_penetration`.
+5. [x] **Test:** Write `tests/unit/test_census.py` to mock the Census API response and ensure the parser correctly extracts the population and age.
 
 ---
 

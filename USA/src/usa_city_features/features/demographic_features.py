@@ -42,3 +42,61 @@ def get_population_bucket(population: Optional[int]) -> Optional[str]:
         return "L"
     else:
         return "VL"
+
+def extract_demographic_features(raw_row: Dict[str, Any], vars_map: Dict[str, str]) -> Dict[str, Any]:
+    """
+    Extracts and calculates features from a raw Census row using a provided
+    variable mapping (e.g. {'population': 'B01003_001E', ...}).
+    """
+    def safe_int(val):
+        try:
+            return int(val)
+        except (ValueError, TypeError):
+            return None
+            
+    def safe_float(val):
+        try:
+            return float(val)
+        except (ValueError, TypeError):
+            return None
+
+    # Get mapped keys
+    pop_key = vars_map.get("population")
+    age_key = vars_map.get("median_age")
+    male_key = vars_map.get("male_population")
+    female_key = vars_map.get("female_population")
+    income_key = vars_map.get("median_income")
+    
+    # Education
+    pop_25_key = vars_map.get("population_25_plus")
+    hs_plus_key = vars_map.get("population_hs_plus")
+    
+    # Penetration
+    total_hh_key = vars_map.get("total_households")
+    internet_key = vars_map.get("internet_households")
+    smartphone_key = vars_map.get("smartphone_households")
+
+    features = {}
+    
+    features["district_population_numeric"] = safe_int(raw_row.get(pop_key)) if pop_key else None
+    features["median_age_estimate"] = safe_float(raw_row.get(age_key)) if age_key else None
+    
+    male_pop = safe_int(raw_row.get(male_key)) if male_key else None
+    female_pop = safe_int(raw_row.get(female_key)) if female_key else None
+    features["sex_ratio"] = calculate_sex_ratio(male_pop, female_pop)
+    
+    median_income = safe_float(raw_row.get(income_key)) if income_key else None
+    features["income_bucket"] = get_income_bucket(median_income)
+    
+    pop_25 = safe_int(raw_row.get(pop_25_key)) if pop_25_key else None
+    hs_plus = safe_int(raw_row.get(hs_plus_key)) if hs_plus_key else None
+    features["literacy_rate"] = calculate_education_rate(pop_25, hs_plus)
+    
+    total_hh = safe_int(raw_row.get(total_hh_key)) if total_hh_key else None
+    internet_hh = safe_int(raw_row.get(internet_key)) if internet_key else None
+    smartphone_hh = safe_int(raw_row.get(smartphone_key)) if smartphone_key else None
+    
+    features["internet_penetration_state"] = calculate_penetration_rate(total_hh, internet_hh)
+    features["smartphone_penetration_state"] = calculate_penetration_rate(total_hh, smartphone_hh)
+    
+    return features

@@ -18,6 +18,8 @@ class SpatialJoiner:
         # Spatial join ZCTA points to Places polygons
         # We assume zcta_gdf has Point geometry representing the ZCTA centroid
         joined = gpd.sjoin(zcta_gdf, self.places_gdf, how="left", predicate="intersects")
+        # Handle edge case: ZCTA crossing multiple places. Use the first one matched (which contains the point)
+        joined = joined[~joined.index.duplicated(keep='first')]
         return joined
 
     def assign_county(self, zcta_gdf: gpd.GeoDataFrame) -> gpd.GeoDataFrame:
@@ -25,6 +27,7 @@ class SpatialJoiner:
             return zcta_gdf
         
         joined = gpd.sjoin(zcta_gdf, self.counties_gdf, how="left", predicate="intersects")
+        joined = joined[~joined.index.duplicated(keep='first')]
         return joined
 
     def assign_cbsa(self, zcta_gdf: gpd.GeoDataFrame) -> gpd.GeoDataFrame:
@@ -32,4 +35,5 @@ class SpatialJoiner:
             return zcta_gdf
         
         joined = gpd.sjoin(zcta_gdf, self.cbsa_gdf, how="left", predicate="intersects")
+        joined = joined[~joined.index.duplicated(keep='first')]
         return joined
