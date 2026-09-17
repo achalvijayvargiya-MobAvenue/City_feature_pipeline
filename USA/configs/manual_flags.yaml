@@ -1,0 +1,1069 @@
+# Curated USA classification lists for one-time feature generation.
+# Pattern mirrors INDIA/pipeline/config.py static lookups.
+# Matching is by normalized Census place name (lowercase, punctuation stripped).
+# Sources noted per section.
+
+# FAA large/medium hubs and major commercial airports (city service areas)
+cities_with_airport:
+  - atlanta
+  - austin
+  - baltimore
+  - boston
+  - charlotte
+  - chicago
+  - cincinnati
+  - cleveland
+  - columbus
+  - dallas
+  - denver
+  - detroit
+  - fort worth
+  - honolulu
+  - houston
+  - indianapolis
+  - jacksonville
+  - kansas city
+  - las vegas
+  - los angeles
+  - memphis
+  - miami
+  - milwaukee
+  - minneapolis
+  - nashville
+  - newark
+  - new orleans
+  - new york
+  - oakland
+  - oklahoma city
+  - orlando
+  - philadelphia
+  - phoenix
+  - pittsburgh
+  - portland
+  - raleigh
+  - sacramento
+  - salt lake city
+  - san antonio
+  - san diego
+  - san francisco
+  - san jose
+  - seattle
+  - st louis
+  - tampa
+  - washington
+  - arlington  # DCA area
+  - anaheim
+  - long beach
+  - ontario
+  - santa ana
+  - fort lauderdale
+  - west palm beach
+  - albuquerque
+  - anchorage
+  - buffalo
+  - richmond
+  - norfolk
+  - tucson
+  - omaha
+  - tulsa
+  - hartford
+  - providence
+  - rochester
+  - syracuse
+  - albany
+  - durham
+  - charleston
+  - savannah
+  - birmingham
+  - little rock
+  - boise
+  - des moines
+  - grand rapids
+  - madison
+  - reno
+  - fresno
+  - burbank
+  - oakland
+  - santa barbara
+  - palm springs
+  - colorado springs
+  - el paso
+  - lubbock
+  - midland
+  - corpus christi
+  - brownsville
+  - mcghee tyson
+  - knoxville
+  - chattanooga
+  - greenville
+  - columbia
+  - dayton
+  - akron
+  - toledo
+  - flint
+  - lansing
+  - green bay
+  - appleton
+  - sioux falls
+  - fargo
+  - billings
+  - missoula
+  - spokane
+  - eugene
+  - medford
+  - bozeman
+  - jackson
+  - asheville
+  - myrtle beach
+  - pensacola
+  - mobile
+  - gulfport
+  - baton rouge
+  - shreveport
+  - lafayette
+  - hilo
+  - kahului
+  - lihue
+  - kona
+
+# Cities served by major international commercial airports (FAA hubs with International service)
+cities_with_international_airport:
+  - atlanta
+  - austin
+  - baltimore
+  - boston
+  - charlotte
+  - chicago
+  - cincinnati
+  - cleveland
+  - columbus
+  - dallas
+  - denver
+  - detroit
+  - fort worth
+  - honolulu
+  - houston
+  - indianapolis
+  - jacksonville
+  - kansas city
+  - las vegas
+  - los angeles
+  - memphis
+  - miami
+  - minneapolis
+  - nashville
+  - newark
+  - new orleans
+  - new york
+  - oakland
+  - orlando
+  - philadelphia
+  - phoenix
+  - pittsburgh
+  - portland
+  - raleigh
+  - sacramento
+  - salt lake city
+  - san antonio
+  - san diego
+  - san francisco
+  - san jose
+  - seattle
+  - st louis
+  - tampa
+  - washington
+  - arlington
+  - fort lauderdale
+  - west palm beach
+  - anchorage
+  - albuquerque
+  - ontario
+  - long beach
+  - buffalo
+  - hartford
+  - providence
+  - richmond
+  - norfolk
+  - charleston
+  - savannah
+  - birmingham
+  - tucson
+  - omaha
+  - reno
+  - palm springs
+  - kahului
+  - hilo
+  - lihue
+
+# Heavy rail / light rail / streetcar metro systems (APTA / Wikipedia rapid+light rail lists)
+cities_with_metro_rail:
+  - new york
+  - washington
+  - arlington
+  - alexandria
+  - chicago
+  - boston
+  - cambridge
+  - philadelphia
+  - atlanta
+  - baltimore
+  - los angeles
+  - miami
+  - san francisco
+  - oakland
+  - berkeley
+  - san jose
+  - seattle
+  - tacoma
+  - portland
+  - denver
+  - salt lake city
+  - minneapolis
+  - saint paul
+  - st paul
+  - houston
+  - dallas
+  - fort worth
+  - phoenix
+  - tempe
+  - mesa
+  - sacramento
+  - san diego
+  - charlotte
+  - pittsburgh
+  - buffalo
+  - cleveland
+  - norfolk
+  - virginia beach
+  - honolulu
+  - jersey city
+  - newark
+  - hoboken
+  - kansas city
+  - st louis
+  - detroit
+  - cincinnati
+  - tucson
+  - oklahoma city
+  - milwaukee
+  - omaha
+  - little rock
+  - tampa
+  - orlando
+  - memphis
+  - nashville
+  - austin
+  - el paso
+  - albuquerque
+  - tucson
+  - richmond
+  - new orleans
+
+# Major seaport host cities (BTS/MARAD principal / top TEU-tonnage ports)
+cities_with_seaport:
+  - new york
+  - newark
+  - jersey city
+  - elizabeth
+  - los angeles
+  - long beach
+  - houston
+  - savannah
+  - norfolk
+  - newport news
+  - portsmouth
+  - charleston
+  - oakland
+  - seattle
+  - tacoma
+  - jacksonville
+  - miami
+  - fort lauderdale
+  - hollywood  # Port Everglades area
+  - baltimore
+  - philadelphia
+  - camden
+  - mobile
+  - new orleans
+  - baton rouge
+  - beaumont
+  - corpus christi
+  - freeport
+  - galveston
+  - texas city
+  - port arthur
+  - lake charles
+  - tampa
+  - boston
+  - portland  # ME and OR share name; both are ports
+  - san diego
+  - san francisco
+  - richmond  # CA port / VA also
+  - wilmington
+  - gulfport
+  - pascagoula
+  - honolulu
+  - anchorage
+  - duluth
+  - superior
+  - cleveland
+  - toledo
+  - detroit
+  - chicago
+  - milwaukee
+  - buffalo
+  - albany
+  - bridgeport
+  - new haven
+  - providence
+  - morehead city
+  - brunswick
+  - panama city
+  - pensacola
+  - palm beach
+  - west palm beach
+  - canaveral
+  - cape canaveral
+  - oxnard
+  - stockton
+  - sacramento
+  - vancouver
+  - bellingham
+  - eureka
+  - coos bay
+  - astoria
+  - longview
+  - kalama
+  - valdez
+  - juneau
+  - ketchikan
+  - dutch harbor
+  - unalaska
+
+# Major Amtrak / intercity rail hubs (Amtrak busiest + major long-distance hubs)
+major_railway_station:
+  - new york
+  - washington
+  - philadelphia
+  - chicago
+  - boston
+  - cambridge
+  - baltimore
+  - los angeles
+  - albany
+  - rensselaer
+  - newark
+  - new haven
+  - wilmington
+  - providence
+  - sacramento
+  - san francisco
+  - oakland
+  - san jose
+  - san diego
+  - seattle
+  - portland
+  - denver
+  - salt lake city
+  - minneapolis
+  - st paul
+  - saint paul
+  - kansas city
+  - st louis
+  - detroit
+  - cleveland
+  - pittsburgh
+  - cincinnati
+  - indianapolis
+  - milwaukee
+  - buffalo
+  - rochester
+  - syracuse
+  - miami
+  - orlando
+  - tampa
+  - jacksonville
+  - atlanta
+  - charlotte
+  - raleigh
+  - richmond
+  - norfolk
+  - new orleans
+  - houston
+  - dallas
+  - fort worth
+  - austin
+  - san antonio
+  - memphis
+  - nashville
+  - albuquerque
+  - tucson
+  - phoenix
+  - reno
+  - eugene
+  - olympia
+  - tacoma
+  - sacramento
+  - emeryville
+  - berkeley
+  - harrisburg
+  - lancaster
+  - springfield
+  - hartford
+  - stamford
+  - white plains
+  - yonkers
+  - trenton
+  - metropark
+  - iselin
+  - princeton
+  - charleston
+  - savannah
+  - birmingham
+  - little rock
+  - jackson
+  - omaha
+  - lincoln
+  - wichita
+  - oklahoma city
+  - tulsa
+  - el paso
+  - las vegas
+  - reno
+  - spokane
+  - boise
+  - grand junction
+  - glenwood springs
+  - flagstaff
+  - fullerton
+  - anaheim
+  - irvine
+  - oceanside
+  - santa barbara
+  - san luis obispo
+  - paso robles
+  - fresno
+  - bakersfield
+  - stockton
+  - davis
+  - martinez
+  - richmond
+  - fairfield
+  - suisin city
+  - vacaville
+  - napa
+  - santa rosa
+  - eugene
+  - albany
+  - salem
+  - vancouver
+  - bellingham
+  - everett
+  - tukwila
+  - burlington
+  - mount vernon
+
+# IT / tech hubs (major tech employment metros)
+it_hub_cities:
+  - san jose
+  - san francisco
+  - oakland
+  - seattle
+  - bellevue
+  - redmond
+  - austin
+  - boston
+  - cambridge
+  - raleigh
+  - durham
+  - cary
+  - new york
+  - washington
+  - arlington
+  - alexandria
+  - denver
+  - boulder
+  - chicago
+  - atlanta
+  - dallas
+  - plano
+  - houston
+  - los angeles
+  - irvine
+  - san diego
+  - phoenix
+  - portland
+  - minneapolis
+  - philadelphia
+  - pittsburgh
+  - detroit
+  - ann arbor
+  - madison
+  - salt lake city
+  - provo
+  - nashville
+  - charlotte
+  - miami
+  - orlando
+  - tampa
+  - indianapolis
+  - columbus
+  - cincinnati
+  - kansas city
+  - st louis
+  - omaha
+  - albuquerque
+  - tucson
+  - reno
+  - boise
+  - boulder
+  - fort collins
+  - huntsville
+  - melbourne
+  - charleston
+
+# Manufacturing hubs (auto, aerospace, advanced manufacturing)
+manufacturing_hub_cities:
+  - detroit
+  - warren
+  - dearborn
+  - sterling heights
+  - chicago
+  - cleveland
+  - toledo
+  - columbus
+  - cincinnati
+  - indianapolis
+  - fort wayne
+  - milwaukee
+  - grand rapids
+  - houston
+  - dallas
+  - fort worth
+  - austin
+  - san antonio
+  - los angeles
+  - long beach
+  - san jose
+  - seattle
+  - tacoma
+  - portland
+  - phoenix
+  - tucson
+  - atlanta
+  - birmingham
+  - nashville
+  - memphis
+  - chattanooga
+  - charlotte
+  - greenville
+  - charleston
+  - kansas city
+  - st louis
+  - wichita
+  - tulsa
+  - oklahoma city
+  - buffalo
+  - rochester
+  - pittsburgh
+  - baltimore
+  - philadelphia
+  - allentown
+  - york
+  - lancaster
+  - leanington
+  - sparrows point
+  - mobile
+  - huntsville
+  - peoria
+  - rockford
+  - dayton
+  - akron
+  - youngstown
+  - erie
+  - louisville
+  - lexington
+  - greensboro
+  - winston-salem
+  - winston salem
+  - high point
+  - spartanburg
+  - greer
+  - montgomery
+  - jackson
+  - shreveport
+  - baton rouge
+  - beaumont
+  - midland
+  - odessa
+  - el paso
+  - brownsville
+  - mcgallen
+  - mcallen
+  - reno
+  - boise
+  - salt lake city
+  - ogden
+  - colorado springs
+  - denver
+  - boulder
+  - minneapolis
+  - st paul
+  - saint paul
+
+# Financial centers
+financial_center_cities:
+  - new york
+  - chicago
+  - boston
+  - san francisco
+  - los angeles
+  - charlotte
+  - washington
+  - philadelphia
+  - dallas
+  - houston
+  - atlanta
+  - minneapolis
+  - denver
+  - seattle
+  - miami
+  - phoenix
+  - san diego
+  - baltimore
+  - pittsburgh
+  - cleveland
+  - detroit
+  - st louis
+  - kansas city
+  - cincinnati
+  - columbus
+  - indianapolis
+  - milwaukee
+  - nashville
+  - raleigh
+  - tampa
+  - orlando
+  - portland
+  - salt lake city
+  - austin
+  - san jose
+  - oakland
+  - hartford
+  - wilmington
+  - jersey city
+  - newark
+  - des moines
+  - omaha
+  - richmond
+
+# Textile / apparel manufacturing centers
+textile_hub_cities:
+  - greensboro
+  - winston-salem
+  - winston salem
+  - high point
+  - charlotte
+  - burlington
+  - durham
+  - raleigh
+  - greenville
+  - spartanburg
+  - anderson
+  - columbia
+  - dalton
+  - atlanta
+  - columbus
+  - los angeles
+  - new york
+  - philadelphia
+  - allentown
+  - reading
+  - lancaster
+  - york
+  - fall river
+  - new bedford
+  - providence
+  - lawrence
+  - lowell
+  - paterson
+  - newark
+  - el paso
+  - mcallen
+  - brownsville
+  - dallas
+  - fort worth
+  - houston
+  - miami
+  - hialeah
+  - chicago
+  - detroit
+  - cleveland
+  - memphis
+  - nashville
+  - birmingham
+  - mobile
+  - jackson
+  - little rock
+  - tulsa
+  - oklahoma city
+  - kansas city
+  - st louis
+  - portland
+  - seattle
+  - san francisco
+  - oakland
+  - san jose
+  - san diego
+
+# Education hubs (major research university / college towns & metros)
+education_hub_cities:
+  - boston
+  - cambridge
+  - new york
+  - philadelphia
+  - chicago
+  - los angeles
+  - san francisco
+  - berkeley
+  - oakland
+  - san diego
+  - san jose
+  - seattle
+  - portland
+  - austin
+  - houston
+  - dallas
+  - fort worth
+  - atlanta
+  - washington
+  - arlington
+  - alexandria
+  - baltimore
+  - pittsburgh
+  - durham
+  - chapel hill
+  - raleigh
+  - cary
+  - madison
+  - ann arbor
+  - columbus
+  - cincinnati
+  - indianapolis
+  - minneapolis
+  - st paul
+  - saint paul
+  - denver
+  - boulder
+  - phoenix
+  - tucson
+  - salt lake city
+  - provo
+  - nashville
+  - knoxville
+  - charlotte
+  - miami
+  - orlando
+  - tampa
+  - new orleans
+  - st louis
+  - kansas city
+  - iowa city
+  - iowa city
+  - amherst
+  - ithaca
+  - princeton
+  - new haven
+  - providence
+  - syracuse
+  - rochester
+  - buffalo
+  - albany
+  - athens
+  - gainesville
+  - tallahassee
+  - charleston
+  - columbia
+  - lexington
+  - louisville
+  - bloomington
+  - west lafayette
+  - champaign
+  - urbana
+  - norman
+  - lawrence
+  - columbia
+  - columbia
+  - eugene
+  - corvallis
+  - pullman
+  - moscow
+  - bozeman
+  - missoula
+  - albuquerque
+  - las cruces
+  - reno
+  - davis
+  - irvine
+  - santa barbara
+  - santa cruz
+  - pasadena
+  - stanford
+  - palo alto
+  - mountain view
+  - college station
+  - lubbock
+  - waco
+  - denton
+  - oxford
+  - chapel hill
+  - winston-salem
+  - winston salem
+  - greenville
+  - blacksburg
+  - charlottesville
+  - williamsburg
+  - princeton
+  - state college
+  - university park
+  - south bend
+  - notre dame
+  - east lansing
+  - lansing
+  - iowa city
+  - ames
+  - lincoln
+  - lawrence
+  - manhattan
+  - stillwater
+  - fayetteville
+  - oxford
+  - tuscaloosa
+  - auburn
+  - baton rouge
+  - lafayette
+  - starkville
+  - oxford
+  - clemson
+  - athens
+  - athens
+  - athens
+
+# Major tourist destinations (leisure, heritage, entertainment, nature gateways)
+tourist_cities:
+  - las vegas
+  - orlando
+  - miami
+  - miami beach
+  - honolulu
+  - new orleans
+  - new york
+  - los angeles
+  - san francisco
+  - san diego
+  - seattle
+  - boston
+  - washington
+  - chicago
+  - philadelphia
+  - nashville
+  - charleston
+  - savannah
+  - key west
+  - anaheim
+  - santa monica
+  - venice
+  - hollywood
+  - beverly hills
+  - palm springs
+  - santa barbara
+  - monterey
+  - carmel
+  - napa
+  - sonoma
+  - lake tahoe
+  - aspen
+  - vail
+  - denver
+  - colorado springs
+  - phoenix
+  - scottsdale
+  - tucson
+  - sedona
+  - flagstaff
+  - grand canyon
+  - albuquerque
+  - santa fe
+  - austin
+  - san antonio
+  - houston
+  - dallas
+  - fort worth
+  - atlanta
+  - memphis
+  - branson
+  - gatlinburg
+  - pigeon forge
+  - myrtle beach
+  - virginia beach
+  - norfolk
+  - baltimore
+  - alexandria
+  - arlington
+  - portland
+  - salem
+  - eugene
+  - bend
+  - portland
+  - bar harbor
+  - portland
+  - cape cod
+  - provincetown
+  - newport
+  - providence
+  - niagara falls
+  - buffalo
+  - rochester
+  - albany
+  - saratoga springs
+  - atlantic city
+  - cape may
+  - philadelphia
+  - gettysburg
+  - lancaster
+  - pittsburgh
+  - cleveland
+  - cincinnati
+  - columbus
+  - detroit
+  - ann arbor
+  - milwaukee
+  - madison
+  - minneapolis
+  - st paul
+  - saint paul
+  - kansas city
+  - st louis
+  - omaha
+  - oklahoma city
+  - tulsa
+  - little rock
+  - hot springs
+  - memphis
+  - nashville
+  - knoxville
+  - chattanooga
+  - birmingham
+  - mobile
+  - pensacola
+  - panama city
+  - panama city beach
+  - destin
+  - tampa
+  - st petersburg
+  - clearwater
+  - fort myers
+  - naples
+  - fort lauderdale
+  - west palm beach
+  - palm beach
+  - jacksonville
+  - st augustine
+  - savannah
+  - hilton head island
+  - charleston
+  - myrtle beach
+  - raleigh
+  - durham
+  - asheville
+  - charlotte
+  - richmond
+  - williamsburg
+  - virginia beach
+  - williamsburg
+  - juneau
+  - anchorage
+  - fairbanks
+  - sitka
+  - ketchikan
+  - maui
+  - kahului
+  - lahaina
+  - hilo
+  - kona
+  - lihue
+  - jackson
+  - jackson hole
+  - bozeman
+  - missoula
+  - yellowstone
+  - rapid city
+  - deadwood
+  - salt lake city
+  - park city
+  - moab
+  - reno
+  - lake tahoe
+  - sacramento
+  - yosemite
+  - fresno
+  - bakersfield
+  - oakland
+  - berkeley
+  - san jose
+  - sacramento
+  - portland
+  - seattle
+  - tacoma
+  - olympia
+  - spokane
+  - vancouver
+  - bellingham
+  - new haven
+  - hartford
+  - stamford
+  - white plains
+  - jersey city
+  - newark
+  - princeton
+  - trenton
+  - wilmington
+  - dover
+  - baltimore
+  - annapolis
+  - frederick
+  - ocean city
+  - rehoboth beach
+  - daytona beach
+  - cocoa beach
+  - canaveral
+  - cape canaveral
+  - galveston
+  - corpus christi
+  - south padre island
+  - brownsville
+  - el paso
+  - amarillo
+  - lubbock
+  - midland
+  - odessa
+  - beaumont
+  - lake charles
+  - baton rouge
+  - lafayette
+  - shreveport
+  - biloxi
+  - gulfport
+  - mobile
+  - pensacola
+  - gulf shores
+  - orange beach
+  - panama city beach
+  - destin
+  - clearwater beach
+  - miami beach
+  - south beach
+  - key largo
+  - islamorada
+  - marathon
+  - key west
