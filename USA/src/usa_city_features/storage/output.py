@@ -2,7 +2,7 @@ import pandas as pd
 from typing import Dict, Any
 import json
 from pathlib import Path
-from .schema_validator import REQUIRED_COLUMNS, generate_quality_report
+from ..validation.schema_validator import REQUIRED_COLUMNS, generate_quality_report, split_complete_records
 import numpy as np
 
 def map_to_36_columns(internal_df: pd.DataFrame) -> pd.DataFrame:
@@ -52,10 +52,10 @@ def map_to_36_columns(internal_df: pd.DataFrame) -> pd.DataFrame:
     out_df["is_union_territory_capital"] = False
     
     # 15. literacy_rate
-    out_df["literacy_rate"] = internal_df.get("education_rate", None)
+    out_df["literacy_rate"] = internal_df.get("literacy_rate", None)
     
     # 16. median_age_estimate
-    out_df["median_age_estimate"] = internal_df.get("median_age", None)
+    out_df["median_age_estimate"] = internal_df.get("median_age_estimate", None)
     
     # 17. consumer_price_index
     out_df["consumer_price_index"] = internal_df.get("cpi_value", None)
@@ -79,10 +79,10 @@ def map_to_36_columns(internal_df: pd.DataFrame) -> pd.DataFrame:
     out_df["major_railway_station"] = internal_df.get("major_railway_station", False)
     
     # 24. internet_penetration_state
-    out_df["internet_penetration_state"] = internal_df.get("internet_penetration", None)
+    out_df["internet_penetration_state"] = internal_df.get("internet_penetration_state", None)
     
     # 25. smartphone_penetration_state
-    out_df["smartphone_penetration_state"] = internal_df.get("smartphone_penetration", None)
+    out_df["smartphone_penetration_state"] = internal_df.get("smartphone_penetration_state", None)
     
     # 26. digital_payment_index
     out_df["digital_payment_index"] = internal_df.get("digital_payment_index", None)
@@ -112,7 +112,7 @@ def map_to_36_columns(internal_df: pd.DataFrame) -> pd.DataFrame:
     out_df["district_population_numeric"] = internal_df.get("county_population", None)
     
     # 35. district_population
-    out_df["district_population"] = internal_df.get("population_bucket", None)
+    out_df["district_population"] = internal_df.get("district_population", None)
     
     # 36. sex_ratio
     out_df["sex_ratio"] = internal_df.get("sex_ratio", None)
@@ -139,13 +139,36 @@ def map_to_36_columns(internal_df: pd.DataFrame) -> pd.DataFrame:
     return out_df[REQUIRED_COLUMNS]
 
 def export_dataset(df: pd.DataFrame, output_path: str, report_path: str) -> None:
-    """Export the mapped dataframe and generate quality report."""
+    """Export full dataset, completeness split (valid/invalid), and quality report."""
     # Ensure directory exists
     Path(output_path).parent.mkdir(parents=True, exist_ok=True)
     Path(report_path).parent.mkdir(parents=True, exist_ok=True)
     
-    # Export CSV
+    # Export full CSV
     df.to_csv(output_path, index=False)
+
+    # Split into complete (final) vs incomplete (enrichment backlog)
+    valid_df, invalid_df, split_summary = split_complete_records(df)
+    out = Path(output_path)
+    valid_path = out.with_name(f"{out.stem}_valid{out.suffix}")
+    invalid_path = out.with_name(f"{out.stem}_invalid{out.suffix}")
+    split_report_path = out.with_name(f"{out.stem}_completeness_report.json")
+
+    valid_df.to_csv(valid_path, index=False)
+    invalid_df.to_csv(invalid_path, index=False)
+    with open(split_report_path, "w", encoding="utf-8") as f:
+        json.dump(
+            {
+                **split_summary,
+                "paths": {
+                    "full": str(output_path),
+                    "valid": str(valid_path),
+                    "invalid": str(invalid_path),
+                },
+            },
+            f,
+            indent=2,
+        )
     
     # Generate and export report
     report = generate_quality_report(df)

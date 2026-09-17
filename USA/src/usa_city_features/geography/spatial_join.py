@@ -20,6 +20,9 @@ class SpatialJoiner:
         joined = gpd.sjoin(zcta_gdf, self.places_gdf, how="left", predicate="intersects")
         # Handle edge case: ZCTA crossing multiple places. Use the first one matched (which contains the point)
         joined = joined[~joined.index.duplicated(keep='first')]
+        # Drop the index_right column so subsequent joins don't fail
+        if 'index_right' in joined.columns:
+            joined = joined.drop(columns=['index_right'])
         return joined
 
     def assign_county(self, zcta_gdf: gpd.GeoDataFrame) -> gpd.GeoDataFrame:
@@ -28,6 +31,8 @@ class SpatialJoiner:
         
         joined = gpd.sjoin(zcta_gdf, self.counties_gdf, how="left", predicate="intersects")
         joined = joined[~joined.index.duplicated(keep='first')]
+        if 'index_right' in joined.columns:
+            joined = joined.drop(columns=['index_right'])
         return joined
 
     def assign_cbsa(self, zcta_gdf: gpd.GeoDataFrame) -> gpd.GeoDataFrame:
@@ -36,4 +41,6 @@ class SpatialJoiner:
         
         joined = gpd.sjoin(zcta_gdf, self.cbsa_gdf, how="left", predicate="intersects")
         joined = joined[~joined.index.duplicated(keep='first')]
+        if 'index_right' in joined.columns:
+            joined = joined.drop(columns=['index_right'])
         return joined

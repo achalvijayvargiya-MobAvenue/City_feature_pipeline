@@ -44,6 +44,12 @@ class CensusAdapter(SourceAdapter):
 
         url = f"{self.base_url}/{request.version}/{request.dataset}"
         
+        # Add API Key if available in environment
+        import os
+        api_key = os.environ.get("CENSUS_API_KEY")
+        if api_key:
+            request.params["key"] = api_key
+            
         # Note: API pagination or batching could be implemented here if requesting 
         # > 50 variables at once. For demographic features, we only request ~7.
         # Requesting ZCTA:* works in one single batch for < 50 variables.

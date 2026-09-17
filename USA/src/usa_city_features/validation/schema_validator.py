@@ -1,5 +1,6 @@
 import pandas as pd
-from typing import List, Dict, Any
+from typing import List, Dict, Any, Tuple
+import numpy as np
 
 REQUIRED_COLUMNS = [
     "#",
@@ -115,26 +116,122 @@ def validate_ranges(df: pd.DataFrame) -> Dict[str, int]:
         
     return {k: int(v) for k, v in errors.items() if v > 0}
 
+# USA has no union territories; this column is always False and excluded from completeness.
+EXCLUDED_FROM_COMPLETENESS = {"is_union_territory_capital"}
+
+# Values treated as missing / incomplete for final production data
+MISSING_STRING_TOKENS = {
+    "", "nan", "none", "null", "unknown", "n/a", "na", "<na>", "nat"
+}
+
+
+def _is_missing_value(value: Any) -> bool:
+    if value is None:
+        return True
+    try:
+        if pd.isna(value):
+            return True
+    except (TypeError, ValueError):
+        pass
+    if isinstance(value, str):
+        return value.strip().lower() in MISSING_STRING_TOKENS
+    return False
+
+
+def completeness_columns(df: pd.DataFrame) -> List[str]:
+    """Columns that must be populated for a USA record to be final/valid."""
+    return [
+        c for c in df.columns
+        if c != "#" and c not in EXCLUDED_FROM_COMPLETENESS
+    ]
+
+
+def missing_columns_for_row(row: pd.Series, columns: List[str]) -> List[str]:
+    return [c for c in columns if _is_missing_value(row.get(c))]
+
+
+def split_complete_records(df: pd.DataFrame) -> Tuple[pd.DataFrame, pd.DataFrame, Dict[str, Any]]:
+    """
+    Split into:
+      - valid: every required field populated (except is_union_territory_capital)
+      - invalid: any blank/unknown field; includes missing_columns for enrichment
+    """
+    work = df.copy()
+    cols = completeness_columns(work)
+
+    missing_matrix = pd.DataFrame(False, index=work.index, columns=cols)
+    for col in cols:
+        series = work[col]
+        miss = series.isna()
+        if series.dtype == object or pd.api.types.is_string_dtype(series):
+            normalized = series.astype(str).str.strip().str.lower()
+            miss = miss | normalized.isin(MISSING_STRING_TOKENS)
+        missing_matrix[col] = miss
+
+    missing_lists = missing_matrix.apply(
+        lambda row: ";".join(missing_matrix.columns[row.values]),
+        axis=1,
+    )
+    valid_mask = ~missing_matrix.any(axis=1)
+
+    valid_df = work.loc[valid_mask].copy()
+    invalid_df = work.loc[~valid_mask].copy()
+    invalid_df["missing_columns"] = missing_lists.loc[~valid_mask].values
+
+    if "#" in valid_df.columns:
+        valid_df["#"] = range(1, len(valid_df) + 1)
+    if "#" in invalid_df.columns:
+        invalid_df["#"] = range(1, len(invalid_df) + 1)
+
+    missing_freq: Dict[str, int] = {
+        col: int(missing_matrix.loc[~valid_mask, col].sum())
+        for col in cols
+        if int(missing_matrix.loc[~valid_mask, col].sum()) > 0
+    }
+    missing_freq = dict(sorted(missing_freq.items(), key=lambda x: (-x[1], x[0])))
+
+    summary = {
+        "total_records": int(len(work)),
+        "valid_complete_records": int(len(valid_df)),
+        "invalid_incomplete_records": int(len(invalid_df)),
+        "excluded_from_completeness": sorted(EXCLUDED_FROM_COMPLETENESS),
+        "required_columns": cols,
+        "invalid_missing_field_frequency": missing_freq,
+    }
+    return valid_df, invalid_df, summary
+
+
 def generate_quality_report(df: pd.DataFrame) -> Dict[str, Any]:
     """Generate a quality report for the dataset."""
     total_records = len(df)
-    
-    null_counts = df.isnull().sum().to_dict()
+
+    null_counts = {}
+    for col in df.columns:
+        series = df[col]
+        miss = series.isna()
+        if series.dtype == object or pd.api.types.is_string_dtype(series):
+            normalized = series.astype(str).str.strip().str.lower()
+            miss = miss | normalized.isin(MISSING_STRING_TOKENS)
+        null_counts[col] = int(miss.sum())
+
     range_errors = validate_ranges(df)
-    
+
     coverage_percentages = {}
     if total_records > 0:
         for col, nulls in null_counts.items():
             coverage_percentages[col] = round(((total_records - nulls) / total_records) * 100, 2)
-    
-    # A record is valid if it has no nulls in critical fields and no range errors
-    valid_records = df.dropna(subset=["pincode", "latitude", "longitude"]).shape[0]
-    
+
+    _, _, split_summary = split_complete_records(df)
+
     return {
         "total_records": total_records,
-        "valid_records": valid_records,
-        "invalid_records": total_records - valid_records,
+        "valid_records": split_summary["valid_complete_records"],
+        "invalid_records": split_summary["invalid_incomplete_records"],
         "null_count_by_column": {k: int(v) for k, v in null_counts.items()},
         "coverage_percentages": coverage_percentages,
-        "range_errors_by_column": range_errors
+        "range_errors_by_column": range_errors,
+        "completeness_split": {
+            "excluded_from_completeness": split_summary["excluded_from_completeness"],
+            "invalid_missing_field_frequency": split_summary["invalid_missing_field_frequency"],
+        },
     }
